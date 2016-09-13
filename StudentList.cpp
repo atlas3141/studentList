@@ -44,7 +44,9 @@ int main(){
   }
 }
 void printStudents(vector<Student*>* list){
-
+  for(vector<Student*>::iterator it = list->begin(); it != list->end(); it++){
+    cout << "Name: " << (*it)->name << ", ID: " << (*it)->id << ", GPA: " << setprecision(2)<<fixed << (*it)->gpa << endl;
+  }
 }
 void newStudent(vector<Student*>* list){
 
