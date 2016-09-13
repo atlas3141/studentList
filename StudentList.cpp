@@ -11,6 +11,10 @@ struct Student{
   float gpa;
 };
 
+void printStudents(vector<Student*>* list);
+void newStudent(vector<Student*>* list);
+void deleteStudent(vector<Student*>* list);
+
 int main(){
   vector<Student*> list;
   char input[20];
@@ -39,3 +43,12 @@ int main(){
     }
   }
 }
+void printStudents(vector<Student*>* list){
+
+}
+void newStudent(vector<Student*>* list){
+
+}
+void deleteStudent(vector<Student*>* list){
+
+} 
