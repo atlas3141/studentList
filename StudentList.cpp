@@ -1,3 +1,6 @@
+//STudentLIst Josh Howell Sept 16
+//A simple list manager, lets you add, remoe and list a bunch of students
+
 #include <iostream>
 #include <vector>
 #include <cstring>
