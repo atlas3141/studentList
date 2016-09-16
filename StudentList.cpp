@@ -19,7 +19,7 @@ int main(){
   vector<Student*> list;
   char input[20];
   bool running = true;
-  while (running == true){
+  while (running == true){ //command line loop
     cin.get(input,20);
     cin.ignore();
     if (!strcmp(input,"PRINT")){
@@ -43,17 +43,17 @@ int main(){
     }
   }
 }
-void printStudents(vector<Student*>* list){
+void printStudents(vector<Student*>* list){ //go throught the list and print out thier info
   for(vector<Student*>::iterator it = list->begin(); it != list->end(); it++){
     cout << "Name: " << (*it)->name << ", ID: " << (*it)->id << ", GPA: " << setprecision(2)<<fixed << (*it)->gpa << endl;
   }
 }
 void newStudent(vector<Student*>* list){
-  Student* s = new Student;
+  Student* s = new Student; //create the new student and put them on the heap
   int newId;
   char newName[30];
   float newGpa;
-  cout << "New ID?" << endl;
+  cout << "New ID?" << endl; //get new students info
   cin >> newId;
   cin.ignore();
   cout << "New Name?" << endl;
@@ -65,14 +65,17 @@ void newStudent(vector<Student*>* list){
   s->id = newId;
   s->gpa = newGpa;
   s->name = strdup(newName);
-  list->push_back(s);
+  cout << "Added student with info" << endl;
+  cout << "Name: " << s->name << ", ID: " << s->id << ", GPA: " << setprecision(2)\
+       <<fixed << s->gpa << endl;
+  list->push_back(s); //add them to the list
 }
 void deleteStudent(vector<Student*>* list){
-  bool deleted = false;
+  bool deleted = false;//ask witch student to delte
   int deleteId;
   cin >> deleteId;
   cin.ignore();
-  for(vector<Student*>::iterator it = list->begin(); it != list-> end(); it++){
+  for(vector<Student*>::iterator it = list->begin(); it != list-> end(); it++){ //look through the fector to find the person with that id
     if((*it)->id == deleteId){
       cout << "Removed " << (*it)->name << endl;
       delete (*it)->name;
@@ -84,6 +87,6 @@ void deleteStudent(vector<Student*>* list){
     }
   }
   if (deleted == false){
-    cout << "No entries wit Id " << deleteId << endl;
+    cout << "No entries with Id " << deleteId << endl;
   }
 } 
