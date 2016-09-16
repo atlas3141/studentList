@@ -23,13 +23,13 @@ int main(){
     cin.get(input,20);
     cin.ignore();
     if (!strcmp(input,"PRINT")){
-      
+      printStudents(& list);
     }
     else if (!strcmp(input, "ADD")){
-
+      newStudent(& list);
     }
     else if (!strcmp(input, "DELETE")){
-
+      deleteStudent(& list);
     }
     else if (!strcmp(input, "HELP")){
       cout << "Commands: \nPRINT\nADD\nDELETE" << endl;
@@ -57,7 +57,7 @@ void newStudent(vector<Student*>* list){
   cin >> newId;
   cin.ignore();
   cout << "New Name?" << endl;
-  cin >> newName;
+  cin.get(newName,30);
   cin.ignore();
   cout << "New GPA?" << endl;
   cin >> newGpa;
@@ -68,7 +68,7 @@ void newStudent(vector<Student*>* list){
   list->push_back(s);
 }
 void deleteStudent(vector<Student*>* list){
-  bool deleted = true;
+  bool deleted = false;
   int deleteId;
   cin >> deleteId;
   cin.ignore();
@@ -83,7 +83,7 @@ void deleteStudent(vector<Student*>* list){
       deleted = true;
     }
   }
-  if (deleted == true){
+  if (deleted == false){
     cout << "No entries wit Id " << deleteId << endl;
   }
 } 
