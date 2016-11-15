@@ -9,7 +9,8 @@
 using namespace std;
 
 struct Student{
-  char* name;
+  char* firstName;
+  char* lastName;
   int id;
   float gpa;
 };
@@ -48,40 +49,47 @@ int main(){
 }
 void printStudents(vector<Student*>* list){ //go throught the list and print out thier info
   for(vector<Student*>::iterator it = list->begin(); it != list->end(); it++){
-    cout << "Name: " << (*it)->name << ", ID: " << (*it)->id << ", GPA: " << setprecision(2)<<fixed << (*it)->gpa << endl;
+    cout << "Name: " << (*it)->firstName  << " " << (*it)->lastName << ", ID: " << (*it)->id << ", GPA: " << setprecision(2)<<fixed << (*it)->gpa << endl;
   }
 }
 void newStudent(vector<Student*>* list){
   Student* s = new Student; //create the new student and put them on the heap
   int newId;
-  char newName[30];
+  char newFirstName[30];
+  char newLastName[30];
   float newGpa;
   cout << "New ID?" << endl; //get new students info
   cin >> newId;
   cin.ignore();
-  cout << "New Name?" << endl;
-  cin.get(newName,30);
+  cout << "New First Name?" << endl;
+  cin.get(newFirstName,30);
+  cin.ignore();
+  cout << "New Last Name" << endl;
+  cin.get(newLastName,30);
   cin.ignore();
   cout << "New GPA?" << endl;
   cin >> newGpa;
   cin.ignore();
   s->id = newId;
   s->gpa = newGpa;
-  s->name = strdup(newName);
+  s->firstName = strdup(newFirstName);
+  s->lastName = strdup(newLastName);
   cout << "Added student with info" << endl;
-  cout << "Name: " << s->name << ", ID: " << s->id << ", GPA: " << setprecision(2)\
+  cout << "Name: " << s->firstName << " " << s->lastName << ", ID: " << s->id << ", GPA: " << setprecision(2) \
        <<fixed << s->gpa << endl;
   list->push_back(s); //add them to the list
 }
 void deleteStudent(vector<Student*>* list){
   bool deleted = false;//ask witch student to delte
   int deleteId;
+  cout << "Give Me an ID to delte" << endl;
   cin >> deleteId;
   cin.ignore();
   for(vector<Student*>::iterator it = list->begin(); it != list-> end(); it++){ //look through the fector to find the person with that id
     if((*it)->id == deleteId){
-      cout << "Removed " << (*it)->name << endl;
-      delete (*it)->name;
+      cout << "Removed " << (*it)->firstName << " " << (*it)-> lastName << endl;
+      delete (*it)->firstName;
+      delete (*it)->lastName;
       delete *it;
       list->erase(it);
       it = list->end();
